@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/indexstyle.css">
+    <script src="main1.js"></script>
+
+</head>
+
+<body>
+    <div id="bg"></div>
+    <form action="#">
+        <h2 style="text-align:center;">Register Account</h2>
+
+        <div class="form-field">
+            <input type="name" placeholder="*Name" id="name" required />
+        </div>
+        <div class="form-field">
+            <input type="email" placeholder="*Email / Username" id="email" required />
+        </div>
+        <div class="form-field">
+            <input type="income" placeholder="*Enter Income" id="income" required />
+        </div>
+
+        <div class="form-field">
+            <input type="password" placeholder="*Password" id="password" required />
+        </div>
+        <div class="form-field" id="sample">
+            <input type="password" placeholder="*Retype Password" id="RetypePassWord" required />
+            <br>
+        </div>
+
+        <div class="form-field">
+            <button class="btn" type="submit" onclick="addUser()">Register</button>
+        </div>
+        <div class="form-field">
+            Already have an account?
+            <a href="index.html">Login</a>
+        </div>
+        <div>
+            <p id="res"></p>
+        </div>
+
+    </form>
+</body>
+
+</html>

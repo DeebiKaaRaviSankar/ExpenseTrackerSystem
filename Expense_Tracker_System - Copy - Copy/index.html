@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/indexstyle.css">
+    <script src="main1.js"></script>
+    <link href="Dashboard.html">
+
+</head>
+
+<body>
+    <!-- partial:index.partial.html -->
+    <div id="bg"></div>
+    <form action="#" onsubmit="return false">
+        <h2 style="text-align:center;">Login to your Account</h2>
+        <div class="form-field">
+            <input type="email" placeholder="Email / Username" id="Email" required />
+        </div>
+
+        <div class="form-field">
+            <input type="password" placeholder="Password" id="Password" required />
+        </div>
+
+        <div class="form-field">
+                <button class="btn" onclick=validate() type="submit">Log in</button>
+        </div>
+        <div class="form-field">
+            Don't have an account?
+            <a href="reg.html">Create one</a>
+        </div>
+    </form>
+    <p id="dummy"></p>
+
+
+</body>
+
+</html>

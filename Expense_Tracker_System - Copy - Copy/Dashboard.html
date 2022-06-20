@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/Dashboardstyle.css">
+    <script src="main1.js"></script>
+    <script src="view.js"></script>
+    <link href="ViewList.html">
+    <script type="text/javascript" src="/jquery/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="inc-exp-container">
+            <h1 id="welcome">
+                <script>
+                    var e = sessionStorage.getItem("currentloggedin");
+                    console.log(e);
+                    document.getElementById("welcome").innerHTML = "Welcome \"" + e + "\"!";
+                </script>
+            </h1>
+
+            <div class="incomeexpense">
+                <div>
+                    <h4>Total Income<p id="money-plus" class="money plus"></p>
+                    </h4>
+                </div>
+                <script>
+
+                    var currentincome, updatedexpense;
+                    var users = JSON.parse(localStorage.getItem('Users'));
+                    console.log(users);
+                    var email, income;
+                    var emailarray = [], incomearray = [];
+                    for (var i = 0; i < users.length; i++) {
+                        var user = users[i];
+                        email = user[1];
+                        income = user[2];
+                        emailarray.push(Object.values(email));
+                        incomearray.push(Object.values(income));
+                    }
+                    // console.log(emailarray);
+                    // console.log(incomearray);
+                    for (var j = emailarray.length - 1; j >= 0; j--) {
+                        if (e == emailarray[j]) {
+                            updatedexpense = (Number)(incomearray[j].toString());
+                            console.log(emailarray[j]);
+                            break;
+                        }
+                        else{
+                            updatedexpense=0;
+                        }
+                    }
+                    document.getElementById("money-plus").innerHTML = updatedexpense;
+
+                </script>
+                <div>
+                    <h4>Your Total Expense<p id="money-minus" class="money minus">0</p>
+                    </h4>
+                </div>
+                <!-- <script> -->
+                <script>
+                    var userexpense = JSON.parse(localStorage.getItem('UserExpense'));
+                    // console.log(users);
+                    var emailID, expenseID, updatedexpense;
+                    var emailarray1 = [], expensearray = [];
+                    for (var i = 0; i < userexpense.length; i++) {
+                        var userExpense = userexpense[i];
+                        emailID = userExpense[0];
+                        expenseID = userExpense[2];
+                        emailarray1.push(Object.values(emailID));
+                        expensearray.push(Object.values(expenseID));
+                    }
+                    console.log(e);
+                    for (var j = emailarray1.length - 1; j >= 0; j--) {
+                        if (e == emailarray1[j]) {
+                            updatedexpense = (Number)(expensearray[j].toString());
+                            console.log(emailarray1[j]);
+                            break;
+                        }
+                        else {
+                            updatedexpense = 0;
+                        }
+                    }
+                    if (updatedexpense == "undefined") {
+                        updatedexpense = 0;
+                        document.getElementById("money-minus").innerHTML = updatedexpense;
+                    }
+                    else {
+                        document.getElementById("money-minus").innerHTML = updatedexpense;
+                    }
+                </script>
+            </div>
+            <p style="text-align: center; color:white;" id="currentincome">Your current income is </p>
+            <script>
+                var userexpense = JSON.parse(localStorage.getItem('UserExpense'));
+                // console.log(users);
+                var emailID, expenseID, updatedexpense;
+                var emailarray1 = [], expensearray = [];
+                for (var i = 0; i < userexpense.length; i++) {
+                    var userExpense = userexpense[i];
+                    emailID = userExpense[0];
+                    expenseID = userExpense[1];
+                    emailarray1.push(Object.values(emailID));
+                    expensearray.push(Object.values(expenseID));
+                }
+                console.log(e);
+                for (var j = emailarray1.length - 1; j >= 0; j--) {
+                    if (e == emailarray1[j]) {
+                        updatedexpense = (Number)(expensearray[j].toString());
+                        console.log(emailarray1[j]);
+                        break;
+                    }
+                    else {
+                        updatedexpense = 0;
+                    }
+                }
+                document.getElementById("currentincome").innerHTML = "Your current income = " + updatedexpense;
+            </script>
+        </div>
+        <div class="selecttype">
+            <h1 id="ex">Select Type of Expense</h1>
+            <div class="designexpense">
+                <select class="select" id="expense">
+                    <option value="SELECT">SELECT</option>
+                    <option value="HouseRent">HouseRent Expense</option>
+                    <option value="Travel">Travel Expense</option>
+                    <option value="Entertainment">Entertainment Expense</option>
+                    <option value="Savings">Savings</option>
+                </select>
+                <br>
+                <br>
+                <label for="amount">
+                    <input class="Amount" type="number" id="amnt" placeholder="Enter Amount">
+                </label>
+                <br>
+                <br>
+                <div class="form-field">
+                    <button id="add" class="btn" type="submit" onclick="calculations()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="view">
+            <div class="form-field">
+                <button id="show" class="btn" type="submit"><a href="ViewList.html">View your expense list</a></button>
+                <!-- <table id="list" class="table table-hover">
+                    <tr>
+                        <th>EMAIL</th>
+                        <th>INCOME</th>
+                        <th>EXPENSE</th>
+                        <th>TYPE</th>
+                    </tr>
+                </table> -->
+                <!-- <script>
+                    
+                </script> -->
+            </div>
+        </div>
+        <div>
+            <button class="btn" type="submit" id="final"><a href="index.html">Logout</a></button>
+        </div>
+    </div>
+</body>
+
+</html>
